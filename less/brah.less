@@ -1,0 +1,226 @@
+﻿// out: ../css/brah.min.css, compress: true, sourceMap: false
+
+@import 'navbar.less';
+@import 'footer.less';
+@import 'contact.less';
+@min-size: 16;
+@min-size-px: 16px;
+
+@max-size: 20;
+@max-size-px: 20px;
+
+@min-size-h: 16;
+@min-size-h-px: 16px;
+
+@max-size-h: 36;
+@max-size-h-px: 36px;
+
+@min-width: 320;
+@min-width-px: 320px;
+
+@max-width: 1200;
+@max-width-px: 1200px;
+
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Palanquin', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: #DDD;
+    background-color: black;
+
+    &.fluid-text {
+        font-size: @min-size-px;
+
+        .header {
+            font-size: @min-size-h-px;
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+        font-family: 'Josefin Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    a {
+        color: #DDDDDD;
+        transition: color 500ms, animation 500ms;
+        outline: 0;
+        border: 2px solid transparent;
+        border-radius: 2px;
+
+        &:hover, &:active, &:focus {
+            color: steelblue;
+            text-decoration: none;
+
+            i.fab {
+
+                &.fa-facebook {
+                    color: @facebook-1;
+                }
+
+                &.fa-instagram {
+                    animation: 2s infinite ease-in-out alternate instacolor;
+                }
+
+                &.fa-youtube {
+                    color: @youtube-1;
+                }
+
+                &.fa-itunes {
+                    color: @itunes-1;
+                }
+
+                &.fa-spotify {
+                    color: @spotify-1;
+                }
+
+                &.fa-google-play {
+                    color: @google-play-1;
+                }
+
+                &.fa-amazon {
+                    color: @amazon-1;
+                }
+
+                &.fa-napster {
+                    color: @napster-1;
+                }
+            }
+        }
+
+        i.fab, i.fas {
+            padding: 0 0.5rem;
+            cursor: pointer;
+            line-height: 30px;
+            transition: color 500ms, transform 500ms;
+            
+            &:hover, &:active, &:focus {
+                transform: scale(1.08);
+            }
+        }
+    }
+
+    .body-content {
+        margin-top: 50px;
+        padding: 0;
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        p {
+            font-size: 1em;
+            text-align: justify;
+            text-align-last: center;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+    }
+}
+
+table {
+    img {
+        max-width: 300px;
+    }
+}
+
+.input-group, .form-group {
+    button {
+        font-family: 'Racing Sans One', cursive;
+    }
+
+    input, textarea {
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &::-moz-placeholder,
+        &::placeholder {
+            font-family: 'Racing Sans One', cursive;
+        }
+    }
+}
+
+#cookieConsent {
+    &.home {
+        margin-top: -56px;
+    }
+}
+
+#octolad {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background-image: url('../img/octolad.png');
+    background-size: cover;
+    background-position: 50% 50%;
+    pointer-events: none;
+}
+
+.subscribe {
+    text-align: center;
+
+    p {
+        text-align: center;
+    }
+}
+
+@media (min-width: @min-width-px) {
+    body {
+        &.fluid-text {
+            font-size: calc(@min-size-px + (@max-size - @min-size) * ((100vw - @min-width-px) / (@max-width - @min-width)));
+
+            .header {
+                font-size: calc(@min-size-px + (@max-size-h - @min-size) * ((100vw - @min-width-px) / (@max-width - @min-width)));
+            }
+        }
+    }
+}
+
+@media (min-width: @max-width-px) {
+    body {
+        &.fluid-text {
+            font-size: @max-size-px;
+
+            .header {
+                font-size: @max-size-h-px;
+            }
+        }
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+        
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    
+}
+
+
