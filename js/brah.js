@@ -20,42 +20,6 @@
         }
     },
 
-    storage: {
-        enabled: false,
-
-        set: function (key, item) {
-            if (brah.storage.enabled) {
-                window.localStorage.setItem(key, item);
-            }
-        },
-
-        get: function (key) {
-            if (brah.storage.enabled) {
-                return window.localStorage.getItem(key);
-            } else {
-                return 'undefined';
-            }
-        },
-
-        remove: function (key) {
-            if (brah.storage.enabled) {
-                window.localStorage.removeItem(key);
-            }
-        },
-
-        clear: function () {
-            if (brah.storage.enabled) {
-                window.localStorage.clear();
-            }
-        },
-
-        init: function () {
-            if (typeof Storage !== 'undefined') {
-                brah.storage.enabled = true;
-            }
-        }
-    },
-
     close: function () {
         $('.collapse').collapse('hide');
         $('.show:not(.collapse)').removeClass('show');
@@ -92,8 +56,12 @@
     },
 
     init: function () {
+        $under.history.title = 'Brahctopus';
+        $under.progress.color = '#2859d7';
+        $under.background.lastSrc = 'https://imgur.com/2BDaHLT';
+        $under.background.lastPos = '0% 100%';
         brah.events();
-        brah.storage.init();
+        $under.storage.init();
         brah.modals.init();
     }
 };

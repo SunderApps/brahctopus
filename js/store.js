@@ -18,7 +18,7 @@
                     variation: variationId,
                     quantity: quantity
                 };
-                var cartString = brah.storage.get('cart') || '{}',
+                var cartString = $under.storage.get('cart') || '{}',
                     cart;
                 if (cartString) {
                     cart = JSON.parse(cartString);
@@ -29,7 +29,7 @@
                         };
                         cartString = JSON.stringify(cart);
                         if (cartString) {
-                            brah.storage.set('cart', cartString);
+                            $under.storage.set('cart', cartString);
                         }
                     }
                 }
@@ -39,7 +39,7 @@
         removeItem: function (id) {
             if (id) {
                 delete brah.store.storage.cart[id];
-                var cartString = brah.storage.get('cart') || '{}',
+                var cartString = $under.storage.get('cart') || '{}',
                     cart;
                 if (cartString) {
                     cart = JSON.parse(cartString);
@@ -47,7 +47,7 @@
                         delete cart[id];
                         cartString = JSON.stringify(cart);
                         if (cartString) {
-                            brah.storage.set('cart', cartString);
+                            $under.storage.set('cart', cartString);
                         }
                     }
                 }
@@ -55,8 +55,8 @@
         },
 
         init: function () {
-            var cartString = brah.storage.get('cart') || '{}';
-            brah.storage.set('cart', cartString);
+            var cartString = $under.storage.get('cart') || '{}';
+            $under.storage.set('cart', cartString);
             brah.store.storage.cart = JSON.parse(cartString);
         }
     },
@@ -160,7 +160,7 @@
         },
 
         init: function () {
-            var cartString = brah.storage.get('cart') || '{}',
+            var cartString = $under.storage.get('cart') || '{}',
                 cart;
 
             if (cartString) {
