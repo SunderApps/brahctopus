@@ -64,11 +64,12 @@
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Palanquin|Racing+Sans+One" rel="stylesheet" type="text/css">
 
-    <link  href="https://unpkg.com/font-awesome-5-css@5.4.1/css/all.min.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" type="text/javascript" rel="stylesheet" />
+    <link href="https://unpkg.com/font-awesome-5-css@5.4.1/css/all.min.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" type="text/javascript" rel="stylesheet" />
     <link href="/css/sunder.min.css" type="text/css" rel="stylesheet" />
     <link href="/css/sidebar.min.css" type="text/css" rel="stylesheet" />
     <link href="/css/player.min.css" type="text/css" rel="stylesheet" />
     <link href="/css/brah.min.css" type="text/css" rel="stylesheet" />
+    <link href="/css/home.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -85,50 +86,42 @@
                 <ul>
                     <li>
                         <a href="/store/" data-page="store">
-                            <i class="fas fa-cash-register"></i>
-                            Store
+                            <i class="fas fa-cash-register"></i>Store
                         </a>
                     </li>
                     <li>
                         <a href="/enter-the-mothership/" data-page="enter-the-mothership">
-                            <i class="fas fa-gamepad"></i>
-                            Enter the Mothership
+                            <i class="fas fa-gamepad"></i>Enter the Mothership
                         </a>
                     </li>
                     <li>
                         <a href="https://song.link/album/us/i/1450453947">
-                            <i class="fab fa-itunes-note"></i>
-                            Listen to Mothership
+                            <i class="fab fa-itunes-note"></i>Listen to Mothership
                         </a>
                     </li>
                     <li>
                         <a href="/visualizer/" data-page="watch">
-                            <i class="fab fa-youtube"></i>
-                            Visualizer
+                            <i class="fab fa-youtube"></i>Visualizer
                         </a>
                     </li>
                     <li>
                         <a href="/photos/" data-page="photos">
-                            <i class="fas fa-camera"></i>
-                            Photos
+                            <i class="fas fa-camera"></i>Photos
                         </a>
                     </li>
                     <li>
                         <a href="/about/" data-page="about">
-                            <i class="fas fa-address-card"></i>
-                            About Brahctopus
+                            <i class="far fa-address-card"></i>About Brahctopus
                         </a>
                     </li>
                     <li>
-                        <a href="/the-rise-of-locus/" data-page="lore">
-                            <i class="fas fa-book"></i>
-                            The Rise of Locus
+                        <a href="/rise-of-locus/" data-page="rise-of-locus">
+                            <i class="far fa-book"></i>The Rise of Locus
                         </a>
                     </li>
                     <li>
                         <a>
-                            <i></i>
-                            Electronic Press Kit
+                            <i class="far fa-newspaper"></i>Electronic Press Kit
                         </a>
                     </li>
                 </ul>    
@@ -149,10 +142,147 @@
         </div>
     </nav>
     <div class="progress"></div>
-    <div class="logo">
-        <button><span></span></button>
+    <section id="pages"></section>
+    <div id="Contact" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form asp-controller="Home" asp-action="Contact">
+                    <div class="modal-body">
+                        <h2>Contact</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Name" class="control-label">Name: </label>
+                            <input id="Name" name="Name" placeholder="Name" type="text" class="form-control" />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email" class="control-label">Email: </label>
+                            <input id="Email" name="Email" placeholder="Email" type="email" class="form-control" />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Message" class="control-label">Message: </label>
+                            <textarea id="Message" name="Message" placeholder="Message" class="form-control"></textarea>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Message" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" style="display:none">
+                                <div class="form-group">
+                                    <label for="Join" class="control-label">Join the mailing list: </label>
+                                    <input id="Join" name="Join" type="checkbox" />
+                                    <span class="text-danger field-validation-valid" data-valmsg-for="Join" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 offset-6">
+                                <div class="form-group">
+                                    <input type="submit" value="Send" class="btn btn-outline-light" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <address>
+                                    <a href="mailto:brahctopus@gmail.com" target="_blank">brahctopus@gmail.com</a>
+                                </address>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="//facebook.com/brahctopusband" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                                <a href="//instagram.com/brahctopus" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="//www.youtube.com/channel/UCWGVAYsHVAvD2U77-Q_EugA" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <section id="pages"></section>   
+    <div id="Subscribe" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2>Subscribe</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="subscribe">
+                        <p>Join our mailing list for the latest ink</p>
+                        <form id="SubscribeForm" asp-controller="Home" asp-action="Subscribe">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" id="Status" name="Status" class="form-control" value="pending" />
+                            <input type="hidden" id="FirstName" name="FirstName" class="form-control" />
+                            <input type="hidden" id="LastName" name="LastName" class="form-control" />
+                            <input type="hidden" id="PhoneNumber" name="PhoneNumber" class="form-control" />
+                            <input type="hidden" id="Birthday" name="Birthday" class="form-control" />
+                            <input type="hidden" id="Address" name="Address" class="form-control" />
+                            <div class="input-group">
+                                <input id="EmailAddress" name="EmailAddress" type="email" placeholder="Email" />
+                                <button class="btn btn-lg btn-outline-light">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <address>
+                                <a href="mailto:brahctopus@gmail.com">brahctopus@gmail.com</a>
+                            </address>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="//facebook.com/brahctopusband" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="//instagram.com/brahctopus" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="//www.youtube.com/channel/UCWGVAYsHVAvD2U77-Q_EugA" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Details" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="name"></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="image"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <h4 class="var-name"></h4>
+                                <div class="variations"></div>
+                            </div>
+                            <div>
+                                <h5>Price: <span class="price"></span></h5>
+                                <p class="description"></p>
+                            </div>
+                            <p>Stock: <span class="stock"></span></p>
+                            <div class="input-group">
+                                <input id="Number" name="Number" type="number" min="1" value="1" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-lg btn-outline-light" data-dismiss="modal">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="octolad"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="></script>
     <script src="/js/sunder.js" type="text/javascript"></script>
     <script src="/js/google.js" type="text/javascript"></script>
