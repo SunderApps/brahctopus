@@ -1,0 +1,44 @@
+﻿// out: false
+
+.modal-content {
+    background-color: black;
+
+    button.close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+    .input-group {
+        justify-content: center;
+
+        input {
+            width: 50%;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            &:hover {
+                border: 1px solid #f8f9fa;
+            }
+        }
+    }
+
+    input {
+        padding: 0 20px;
+        border: 0;
+    }
+
+    textarea {
+        padding: 5px 20px;
+        border: 0;
+    }
+
+    .col-sm-6, .col-md-6, .col-lg-6 {
+        text-align: center;
+    }
+}

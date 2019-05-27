@@ -1,0 +1,64 @@
+// out: ../css/electronic-press-kit.min.css, compress: true, sourceMap: false
+
+@import 'global.less';
+
+.electronic-press-kit {
+    padding-bottom: 25vh;
+}
+
+.epk {
+    text-align: center;
+    margin: 5rem auto;
+    width: 90%;
+    padding: 2.5%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    &.row {
+        margin-bottom: 0;
+        margin-top: 10rem;
+
+        .col-md-6, .col-lg-6 {
+            margin-bottom: 5rem;
+        }
+    }
+
+    address {
+        font-size: 1.25em;
+    }
+
+    ul {
+        text-align: left;
+
+        &.links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+            font-size: 1.5em;
+
+            li {
+                margin: 0 1rem;
+            }
+        }
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .epk {
+        width: 70%;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}

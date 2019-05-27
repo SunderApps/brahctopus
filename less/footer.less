@@ -3,21 +3,29 @@
 @import 'global.less';
 
 footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    width: ~"calc(100% - 60px)";
     text-align: center;
+    transition: left 300ms;
+    background-color: rgba(0,0,0,0.8);
+
+    span {
+        padding: 0 20px;
+    }
+
+    img.sunder {
+        height: 33px;
+    }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
+@media(max-width: 320px) {
+    footer {
+        left: 0;
+        width: 100%;
+    }
 }

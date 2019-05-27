@@ -1,0 +1,1 @@
+.about .entry{display:flex;flex-direction:column;justify-content:center;text-align:center;margin:0 auto 10rem auto;width:90%;min-height:100vh}.about .entry:last-of-type{margin-bottom:50vh}.about .entry .content{padding:2.5%;border-radius:5px;background-color:rgba(0,0,0,0.8)}@media (min-width:768px){.about .entry{width:70%}}

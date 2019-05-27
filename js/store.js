@@ -172,6 +172,14 @@
         }
     },
 
+    update: function () {
+        if ($('.container.store').hasClass('open')) {
+            $('#preview').addClass('show');
+        } else {
+            $('#preview').removeClass('show');
+        }
+    },
+
     getPrice: function (cents) {
         if (cents || cents === 0) {
             return '$' + cents / 100 + '.' + cents % 100 + (cents % 100 < 10 ? '0' : '');
@@ -269,12 +277,38 @@
         brah.store.UI.addItem(id, variationId, quantity);
     },
 
+    checkout: function () {
+        var items = {};
+        $.each($('#cart input'), (index, input)=>{
+            var $input = $(input);
+            items[$input.attr('name')] = $(input).val();
+        });
+        if (items) {
+            $.ajax('https://sunder-functions20190319082035.azurewebsites.net/api/BrahProcessPayment?code=6Y86EMfta365ctJu6bZJ9Q/WC/h2iZaAaSM945iAfJYzeVAfYmtxpg==', {
+                method: 'POST',
+                contentType: 'json',
+                crossDomain: true,
+                data: JSON.stringify(items),
+                success: function (url) {
+                    window.open(url, '_self');
+                },
+                error: function (xhr, status, error) {
+                    alert('Checkout failed.');
+                }
+            });
+        } else {
+            alert('Add items to your cart before checking out.');
+        }
+    },
+
     events: function () {
         $('.fa-cart-arrow-down').off('click').on('click', brah.store.addItem);
         $('#store .fa-search-plus').off('click').on('click', brah.store.viewStoreItem);
         $('#cart .fa-search-plus').off('click').on('click', brah.store.viewCartItem);
+        $('#cart button').off('click').on('click', brah.store.checkout);
         $('#preview').off('click').on('click', brah.store.UI.toggleCart);
         $('#Details .input-group button').off('click').on('click', brah.store.updateItems);
+        $under.$erver.on('$-open-page', brah.store.update);
     },
 
     parse: function (json) {
@@ -296,20 +330,27 @@
                     stock: 0
                 };
                 promises.push(new Promise(function (resolve, reject) {
-                    $.getJSON({
-                        url: 'StoreItems/' + variation.id,
-                        data: '',
+                    $.ajax('https://sunder-functions20190319082035.azurewebsites.net/api/BrahGetItems?code=owQcfwaKPwVETuuGod3n4uggP7vlzV2q036baKGWTIq4cVt/WTqxfw==', {
+                        method: 'POST',
+                        contentType: 'json',
+                        dataType: 'json',
+                        crossDomain: true,
+                        data: JSON.stringify({
+                            'id': variation.id
+                        }),
                         success: function (json) {
                             if (json && json.counts && json.counts[0] && json.counts[0].quantity > 0) {
                                 brah.store.items[item.id].enabled = true;
                             }
                             if (json.counts) {
                                 brah.store.items[item.id].variations[variation.id].stock = json.counts[0].quantity || 0;
-                                
                             } else {
                                 delete brah.store.items[item.id].variations[variation.id];
                             }
                             resolve(variation.id);
+                        },
+                        error: function (xhr, status, error) {
+
                         }
                     });
                 }));
@@ -321,7 +362,7 @@
 
     getItems: function () {
         $.getJSON({
-            url: 'StoreItems',
+            url: 'https://sunder-functions20190319082035.azurewebsites.net/api/BrahGetItems?code=owQcfwaKPwVETuuGod3n4uggP7vlzV2q036baKGWTIq4cVt/WTqxfw==',
             data: '',
             success: brah.store.parse
         }).fail(brah.store.init);
@@ -331,6 +372,7 @@
         brah.store.storage.init();
         brah.store.UI.init();
         brah.store.events();
+        brah.store.update();
     }
 };
 

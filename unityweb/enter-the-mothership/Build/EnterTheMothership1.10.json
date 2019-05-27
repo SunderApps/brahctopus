@@ -1,0 +1,13 @@
+{
+"companyName": "Home Agame",
+"productName": "Enter the Mothership",
+"dataUrl": "EnterTheMothership1.10.data.unityweb",
+"wasmCodeUrl": "EnterTheMothership1.10.wasm.code.unityweb",
+"wasmFrameworkUrl": "EnterTheMothership1.10.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000",
+"cacheControl": {"default": "must-revalidate"}
+}

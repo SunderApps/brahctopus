@@ -1,30 +1,4 @@
 ﻿var brah = brah || {
-    modals: {
-
-        show: function () {
-            $('#octolad').stop().fadeTo(2000, 0.1);
-        },
-
-        hide: function () {
-            $('#octolad').stop().fadeTo(300, 0);
-        },
-
-        events: function () {
-            $('#Contact, #Subscribe, #Details')
-                .on('show.bs.modal', brah.modals.show)
-                .on('hide.bs.modal', brah.modals.hide);
-        },
-
-        init: function () {
-            brah.modals.events();
-        }
-    },
-
-    close: function () {
-        $('.collapse').collapse('hide');
-        $('.show:not(.collapse)').removeClass('show');
-    },
-
     isEdge: function() {
         var ua = window.navigator.userAgent;
 
@@ -51,18 +25,61 @@
         return false;
     },
 
+    forms: {
+        subscribe: function () {
+            var email = $(this).parent().find('input[type=email]').val();
+            if ($under.validEmail(email)) {
+                $.ajax('https://sunder-functions20190319082035.azurewebsites.net/api/BrahSubscribe?code=aZXodW9PLSECOChgSpl1jYvZ3zRhTddxgRAmWML/wz0lsdqS1EScBw==', {
+                    method: 'POST',
+                    contentType: 'json',
+                    crossDomain: true,
+                    data: JSON.stringify({
+                        'email': email
+                    }),
+                    success: function (data) {
+                        alert('Thanks for subscribing!  Check your inbox for a confirmation email.');
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Subscribing failed.  To subscribe manually, go to: http://eepurl.com/gdXTYH');
+                    }     
+                });
+            } else {
+                alert('Invalid Email Address');
+            }
+        },
+
+        contact: function () {
+            var name = $('#Contact #Name').val(),
+                email = $('#Contact #Email').val(),
+                subject = $('#Contact #Subject').val(),
+                message = $('#Contact #Message').val();
+            $under.contact.send(name, email, subject, message);
+        },
+
+        events: function () {
+            $('.subscribe .input-group button').on('click', brah.forms.subscribe);
+            $('#Contact .form-group button').on('click', brah.forms.contact);
+        },
+
+        init: function () {
+            brah.forms.events();
+        }
+    },
+
     events: function () {
-        $(window).on('click', brah.close);
+        
     },
 
     init: function () {
         $under.history.title = 'Brahctopus';
         $under.progress.color = '#2859d7';
         $under.background.lastSrc = 'https://imgur.com/2BDaHLT';
-        $under.background.lastPos = '0% 100%';
+        $under.background.lastPos = 'calc(50% + 30px) 50%';
+        $under.background.init();
+        $under.contact.sendToEmail = 'brahctopus@gmail.com';
+        $under.contact.sendToName = 'Brahctopus Ink';
         brah.events();
-        $under.storage.init();
-        brah.modals.init();
+        brah.forms.init();
     }
 };
 

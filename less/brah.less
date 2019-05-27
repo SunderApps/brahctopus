@@ -1,25 +1,7 @@
 ﻿// out: ../css/brah.min.css, compress: true, sourceMap: false
 
-@import 'navbar.less';
 @import 'footer.less';
-@import 'contact.less';
-@min-size: 16;
-@min-size-px: 16px;
-
-@max-size: 20;
-@max-size-px: 20px;
-
-@min-size-h: 16;
-@min-size-h-px: 16px;
-
-@max-size-h: 36;
-@max-size-h-px: 36px;
-
-@min-width: 320;
-@min-width-px: 320px;
-
-@max-width: 1200;
-@max-width-px: 1200px;
+@import 'modals.less';
 
 body {
     -webkit-user-select: none;
@@ -27,16 +9,13 @@ body {
     -ms-user-select: none;
     user-select: none;
     font-family: 'Palanquin', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    width: 100vw;
+    height: 100vh;
     color: #DDD;
     background-color: black;
-
-    &.fluid-text {
-        font-size: @min-size-px;
-
-        .header {
-            font-size: @min-size-h-px;
-        }
-    }
+    background-size: cover;
+    background-position: ~"calc(50% + 30px) 50%";
+    overflow-x: hidden;
 
     h1, h2, h3, h4, h5, h6 {
         text-align: center;
@@ -45,9 +24,8 @@ body {
 
     a {
         color: #DDDDDD;
-        transition: color 500ms, animation 500ms;
+        transition: color 300ms, animation 300ms;
         outline: 0;
-        border: 2px solid transparent;
         border-radius: 2px;
 
         &:hover, &:active, &:focus {
@@ -91,20 +69,129 @@ body {
         }
 
         i.fab, i.fas {
-            padding: 0 0.5rem;
             cursor: pointer;
             line-height: 30px;
-            transition: color 500ms, transform 500ms;
-            
-            &:hover, &:active, &:focus {
-                transform: scale(1.08);
+            transition: color 300ms, transform 300ms;
+        }
+    }
+
+    nav {
+        .head {
+            .toggle {
+                p {
+                    margin: 0;
+                    top: 4px;
+                    transition: left 300ms;
+                }
+
+                &:hover, &:active, &:focus, &.show {
+                    border-color: #2859d7;
+                }
+            }
+        }
+
+        ul {
+            li {
+                &:hover {
+                    filter: brightness(1);
+
+                    i {
+                        &.fa-cash-register {
+                            border-color: #e1b137;
+                            color: #e1b137;
+                        }
+
+                        &.fa-itunes-note {
+                            border-color: #7eaacd;
+                            color: #7eaacd;
+                        }
+
+                        &.fa-youtube {
+                            border-color: red;
+                            color: red;
+                        }
+
+                        &.fa-address-card {
+                            border-color: #00cc00;
+                            color: #00cc00;
+                        }
+
+                        &.fa-book {
+                            border-color: #ca1cca;
+                            color: #ca1cca;
+                        }
+
+                        &.fa-newspaper {
+                            border-color: #00b3b3;
+                            color: #00b3b3;
+                        }
+
+                        &.fa-phone {
+                            border-color: darkslategray;
+                            color: darkslategray;
+                        }
+
+                        &.fa-envelope {
+                            border-color: darkslateblue;
+                            color: darkslateblue;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.show {
+            .head {
+                .toggle {
+                    p {
+                        left: 45px;
+                    }
+                }
+            }
+        }
+
+        &:hover, &:active, &:focus, &.show {
+            .head {
+                .toggle {
+                    span {
+                        left: 10px;
+                        border-top-right-radius: unset;
+                        border-bottom-left-radius: unset;
+                        transform: rotate(90deg);
+
+                        &::before {
+                            left: -2px;
+                            top: -15px;
+                            width: 20px;
+                            height: 15px;
+                            background-color: transparent;
+                            border: solid 3px #ddd;
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 5px;
+                            transform: rotate(90deg);
+                        }
+
+                        &::after {
+                            left: 10px;
+                            top: -15px;
+                            width: 20px;
+                            height: 15px;
+                            background-color: transparent;
+                            border: solid 3px #ddd;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
             }
         }
     }
 
-    .body-content {
-        margin-top: 50px;
+    .container {
+        max-width: unset;
         padding: 0;
+        overflow-x: hidden;
 
         h1 {
             font-size: 2.5em;
@@ -179,48 +266,11 @@ table {
     }
 }
 
-@media (min-width: @min-width-px) {
-    body {
-        &.fluid-text {
-            font-size: calc(@min-size-px + (@max-size - @min-size) * ((100vw - @min-width-px) / (@max-width - @min-width)));
-
-            .header {
-                font-size: calc(@min-size-px + (@max-size-h - @min-size) * ((100vw - @min-width-px) / (@max-width - @min-width)));
-            }
-        }
-    }
+.progress {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#343a40+0,343a40+45,13771e+50,343a40+55,343a40+100 */
+    background: #343a40; /* Old browsers */
+    background: -moz-linear-gradient(left, #343a40 0%, #343a40 45%, #2859d7 50%, #343a40 55%, #343a40 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #343a40 0%,#343a40 45%,#2859d7 50%,#343a40 55%,#343a40 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #343a40 0%,#343a40 45%,#2859d7 50%,#343a40 55%,#343a40 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#343a40', endColorstr='#343a40',GradientType=1 ); /* IE6-9 */
 }
-
-@media (min-width: @max-width-px) {
-    body {
-        &.fluid-text {
-            font-size: @max-size-px;
-
-            .header {
-                font-size: @max-size-h-px;
-            }
-        }
-    }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-        
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-    
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-    
-}
-
-
